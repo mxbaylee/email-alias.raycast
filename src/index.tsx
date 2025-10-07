@@ -25,7 +25,7 @@ import {
   Toast,
 } from "@raycast/api";
 import { useEffect, useState } from "react";
-import { generateRandomHex, getName } from "./util";
+import { getName } from "./util";
 
 interface Preferences {
   emailDomain: string;
@@ -66,7 +66,7 @@ export default function Command() {
       filtering={false}
     >
       { [6, 11, 16].map((length: number) => {
-        const emailAddress = `${activeDomain}.${generateRandomHex(length)}@${emailDomain}`;
+        const emailAddress = `${activeDomain}@${emailDomain}`;
         return (
           <List.Item
             icon={Icon.Envelope}
