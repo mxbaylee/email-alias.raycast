@@ -15,6 +15,8 @@ The Random Email Generator allows you to effortlessly create unique email addres
 * Install the [Raycast](https://www.raycast.com/) app
 * Install the [Browser Extension](https://www.raycast.com/browser-extension)
 * Install this plugin
+  * `npm run build`
+  * `Raycast` > `Import Extension` > `./dist`
 
 ## 🏗️ Development
 
