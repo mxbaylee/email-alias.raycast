@@ -60,35 +60,31 @@ export default function Command() {
     });
   }, []);
 
+  const emailAddress = `${activeDomain}@${emailDomain}`;
+
   return (
     <List
       isLoading={isLoading}
       filtering={false}
     >
-      { [6, 11, 16].map((length: number) => {
-        const emailAddress = `${activeDomain}@${emailDomain}`;
-        return (
-          <List.Item
-            icon={Icon.Envelope}
-            key={length}
-            title={emailAddress}
-            actions={
-              <ActionPanel>
-                <Action.CopyToClipboard title="Copy Email Address" content={emailAddress} />
-              </ActionPanel>
+      <List.Item
+        icon={Icon.Envelope}
+        title={emailAddress}
+        actions={
+          <ActionPanel>
+            <Action.CopyToClipboard title="Copy Email Address" content={emailAddress} />
+          </ActionPanel>
+        }
+        accessories={[
+          {
+            icon: Icon.CopyClipboard,
+            tag: {
+              value: `${emailAddress}`,
+              color: Color.Magenta
             }
-            accessories={[
-              {
-                icon: Icon.CopyClipboard,
-                tag: {
-                  value: `${length}`,
-                  color: Color.Magenta
-                }
-              },
-            ]}
-          />
-        );
-      })}
+          },
+        ]}
+      />
     </List>
   );
 }
