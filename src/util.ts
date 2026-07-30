@@ -14,6 +14,16 @@ export function getName(rawInput: string): string {
   return segments.length === 1 ? segments[0] : segments.slice(0, -1).join('.');
 }
 
+export function buildOutboundAddress(alias: string, recipient: string): string {
+  const atIdx = alias.lastIndexOf('@');
+  const aliasPrefix = alias.slice(0, atIdx);
+  const aliasDomain = alias.slice(atIdx + 1);
+  const recipAtIdx = recipient.indexOf('@');
+  const recipientUser = recipient.slice(0, recipAtIdx);
+  const recipientDomain = recipient.slice(recipAtIdx + 1);
+  return `${aliasPrefix}+${recipientUser}=${recipientDomain}@${aliasDomain}`;
+}
+
 export function generateRandomHex(rawLength: number): string {
   const length = Math.max(rawLength, 0);
   return crypto.randomBytes(Math.ceil(length / 2)).toString('hex').slice(0, length);

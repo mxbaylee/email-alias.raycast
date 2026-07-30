@@ -16,12 +16,16 @@ type ExtensionPreferences = {
 declare type Preferences = ExtensionPreferences
 
 declare namespace Preferences {
-  /** Preferences accessible in the `index` command */
-  export type Index = ExtensionPreferences & {}
+  /** Preferences accessible in the `receive-alias` command */
+  export type ReceiveAlias = ExtensionPreferences & {}
+  /** Preferences accessible in the `send-from-alias` command */
+  export type SendFromAlias = ExtensionPreferences & {}
 }
 
 declare namespace Arguments {
-  /** Arguments passed to the `index` command */
-  export type Index = {}
+  /** Arguments passed to the `receive-alias` command */
+  export type ReceiveAlias = {}
+  /** Arguments passed to the `send-from-alias` command */
+  export type SendFromAlias = {}
 }
 

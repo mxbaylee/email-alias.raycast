@@ -1,8 +1,8 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "random-email-generator",
-  "title": "Random Email Generator",
-  "description": "Quickly generate random email addresses for your wildcard domain based on the active browser window.",
+  "name": "email-alias",
+  "title": "Email Alias",
+  "description": "Manage email aliases for your wildcard relay domain — generate receiving aliases and construct outbound addresses.",
   "icon": "icon.png",
   "author": "mxbaylee",
   "license": "MIT",
@@ -21,10 +21,18 @@
   "commands": [
     {
       "icon": "icon.png",
-      "name": "index",
-      "title": "Generate Email",
-      "subtitle": "Using Active Browser Window",
-      "description": "Generate dynamic email addresses for registration.",
+      "name": "receive-alias",
+      "title": "Alias: Receive",
+      "subtitle": "Inbound Alias",
+      "description": "Generate a receiving alias for a service based on the active browser window.",
+      "mode": "view"
+    },
+    {
+      "icon": "icon.png",
+      "name": "send-from-alias",
+      "title": "Alias: Send",
+      "subtitle": "Outbound Alias",
+      "description": "Construct an outbound address to send email from a custom alias.",
       "mode": "view"
     }
   ],
@@ -45,6 +53,5 @@
     "test": "vitest",
     "build": "ray build --emoji -e dist -o dist",
     "dev": "ray develop"
-  },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  }
 }

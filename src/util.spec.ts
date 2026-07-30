@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { generateRandomHex, getName } from './util';
+import { generateRandomHex, getName, buildOutboundAddress } from './util';
 
 describe('generateRandomHex', () => {
   it('should generate a random hex string of the specified length', () => {
@@ -69,5 +69,23 @@ describe('getName', () => {
         const actual = getName(rawInput);
         expect(actual).toBe(expected);
     });
+  });
+});
+
+describe('buildOutboundAddress', () => {
+  it('constructs a basic outbound address', () => {
+    const result = buildOutboundAddress(
+      'somecustomemail@px25.baylee.dev',
+      'phillip@phillipcoulsonpsychotherapy.com'
+    );
+    expect(result).toBe('somecustomemail+phillip=phillipcoulsonpsychotherapy.com@px25.baylee.dev');
+  });
+
+  it('preserves plus signs in the recipient local part', () => {
+    const result = buildOutboundAddress(
+      'somecustomemail@px25.baylee.dev',
+      'phillip+office@phillipcoulsonpsychotherapy.com'
+    );
+    expect(result).toBe('somecustomemail+phillip+office=phillipcoulsonpsychotherapy.com@px25.baylee.dev');
   });
 });
