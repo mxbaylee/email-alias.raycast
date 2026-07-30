@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Set date
+        run: echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+      - name: Zip dist
+        run: zip -r email-alias.zip dist/
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "${{ env.DATE }}-${{ github.sha }}"
+          name: "${{ env.DATE }}-${{ github.sha }}"
+          files: email-alias.zip
+
+      - name: Update latest release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: latest
+          files: email-alias.zip
+          prerelease: false

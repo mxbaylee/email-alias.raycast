@@ -18,9 +18,19 @@ The outbound address format follows the convention used by [Addy.io](https://add
 
 * Install the [Raycast](https://www.raycast.com/) app
 * Install the [Browser Extension](https://www.raycast.com/browser-extension) _(optional — pre-fills the service name from the active tab)_
-* Install this plugin
-  * `npm run build`
-  * `Raycast` > `Import Extension` > `./dist`
+
+### Production
+
+Download the latest `email-alias.zip` from [Releases](../../releases/latest), unzip it, then in Raycast: **Import Extension** → select the `dist` folder.
+
+### From Source
+
+```bash
+npm install
+npm run build
+```
+
+Then in Raycast: **Import Extension** → select `./dist`.
 
 ## 🏗️ Development
 
@@ -31,6 +41,8 @@ npm install
 npm test
 npm run dev
 ```
+
+`npm run dev` hot-reloads the extension inside Raycast but does not produce a persistent install — use the production steps above to install permanently.
 
 ## 🙋🏼 How to Use
 
